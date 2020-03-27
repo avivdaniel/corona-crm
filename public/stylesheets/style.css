@@ -1,0 +1,44 @@
+html,body {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.fa-users {
+    font-size:1.5em;
+}
+
+/* .avatar-border {
+    position: absolute;
+    transform: translateX(50%);
+    top: -18px;
+    right: 50%;
+    width: 162px;
+    height: 148px;
+} */
+
+
+.avatar {
+    height: 100px;
+    background-image: url("https://cdn.pixabay.com/photo/2020/02/26/11/47/smilie-4881520_1280.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.user-container {
+    position: absolute;
+    height: 70%;
+    width: 90%;
+    top: 50%; right: 50%;
+    transform: translate(50%,-50%);
+}
+
+.edit-input {
+    width: 50%;
+}
+
+.left {
+    height: 100%;
+}

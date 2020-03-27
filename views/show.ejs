@@ -1,0 +1,31 @@
+<%- include("partials/header") %>
+
+
+<div class="container">
+    <div class="shadow bg-light container user-container d-flex flex-column flex-md-row justify-content-around 
+    -around text-center align-items-center
+    ">
+
+        <div class="img-thumbnail">
+            <div class="container">
+                <div class="avatar my-3"></div>
+                <h1 class="text-info"><%= customer.name %></h1>
+                <p class="text-secondary"><%= customer.email %></p>
+            </div>
+        </div>
+
+
+        <div class="info-container text-left">
+            <p><span class="font-weight-bold text-info">Birth day:</span> <%= customer.bdate.toDateString() %>
+            </p>
+            <p><span class="font-weight-bold text-info">Notes:</span> <%= customer.notes %></p>
+            <div class="text-center">
+                <a href="/customers/<%= customer._id %>/edit" class="btn btn-outline-warning">Edit</a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<%- include("partials/footer") %>

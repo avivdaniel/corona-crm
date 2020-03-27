@@ -1,0 +1,91 @@
+<%- include("partials/header") %>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-4 mt-2 bg-info left">
+            <h3 class="text-white text-center pt-3">
+                <span>
+                    <i class="fas fa-user-plus"></i>
+                </span>
+                Create new customer
+            </h3>
+            <form action="/customers" method="POST">
+                <div class="form-group">
+                    <label for="fullName" class="text-white pt-3">Full Name:</label>
+                    <input type="text" class="form-control" id="fullName" name="customer[name]"
+                        placeholder="Enter name" />
+                </div>
+                <div class="form-group">
+                    <label for="email" class="text-white pt-2">Email:</label>
+                    <input type="email" class="form-control" id="email" name="customer[email]"
+                        placeholder=" Enter email" />
+                </div>
+                <div class="form-group">
+                    <label for="bdate" class="text-white pt-2">Birth date:</label>
+                    <input type="date" class="form-control" id="bdate" name="customer[bdate]" />
+                </div>
+                <div class="form-group">
+                    <label for="notes" class="text-white pt-2">Notes:</label>
+
+                    <textarea name="customer[notes]" id="notes" class="d-block w-100"></textarea>
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" class="btn btn-outline-light">
+                </div>
+            </form>
+        </div>
+        <div class="col-12 col-md-8 mt-2">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Full name</th>
+                            <th scope="col">Email address</th>
+                            <th scope="col">Birthdate</th>
+                            <th scope="col">Created On</th>
+                            <th scope="col">More info</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% let id = 0; %>
+                        <% customers.forEach((customer)=> { %>
+                        <tr>
+                            <th scope="row"><%= id += 1 %></th>
+                            <td><%= customer.name %></td>
+                            <td><%= customer.email %></td>
+                            <td><%= customer.bdate.toDateString() %></td>
+                            <td><%= customer.created.toDateString() %></td>
+                            <td><a href="/customers/<%= customer._id %>" class="btn btn-outline-info">Click</a>
+                            </td>
+                            <td class="d-flex">
+                                <form action="/customers/<%= customer._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-outline-danger">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                                <!-- <a href="#" class="pr-2">
+                                    <span class="btn btn-outline-danger">
+                                        <i class="far fa-trash-alt"></i>
+                                    </span>
+                                </a> -->
+                                <a href="/customers/<%= customer._id %>/edit" class="pl-2">
+
+                                    <span class="btn btn-outline-info">
+                                        <i class="fas fa-user-edit"></i>
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("partials/footer") %>
